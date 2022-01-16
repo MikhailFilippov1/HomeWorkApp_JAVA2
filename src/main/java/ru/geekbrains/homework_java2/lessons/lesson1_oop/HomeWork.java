@@ -26,7 +26,7 @@ public class HomeWork {
                 new Treadmill()
         };
         treadmills[0].setTreadmillLength(100);
-        treadmills[1].setTreadmillLength(50);
+        treadmills[1].setTreadmillLength(50)
 
 
         for (int i = 0; i < 4; i++) {
