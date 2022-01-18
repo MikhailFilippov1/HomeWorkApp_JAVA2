@@ -84,18 +84,17 @@ public class HomeWork2 {
         int sum = 0;
 
         for (int y = 0; y < array.length; y++) {
-            if (array.length > 4) {
+            if (array.length != 4) {
                 throw new MyArraySizeException("Size Y more than 4");
             }
             for (int x = 0; x < array[y].length; x++) {
-                if (array[y].length > 4) {
+                if (array[y].length != 4) {
                     throw new MyArraySizeException("Size X more than 4");
                 }
                 try {
                     sum += Integer.parseInt(array[y][x].trim());
                 }catch (NumberFormatException e) {
-                    System.out.printf("Can't parse String %s into Integer in the [%d][%d] cell\n", array[y][x], y, x);
-                    return;
+                    throw new MyArrayDataException(String.format("Can't parse String %s into Integer in the [%d][%d] cell\n", array[y][x], y, x));
                 }
             }
         }
