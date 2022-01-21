@@ -23,12 +23,4 @@ public class PhoneBook {
         return persons.computeIfAbsent(name, key -> new HashSet<>());
     }
 
-
-    /*@Override
-    public String toString() {
-        return "PhoneBook{" +
-                "Name='" + name + '\'' +
-                " PhoneNumber=" + number +
-                '}';
-    }*/
 }

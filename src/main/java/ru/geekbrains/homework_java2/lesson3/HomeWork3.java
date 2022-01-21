@@ -22,6 +22,7 @@ public class HomeWork3 {
         phone.add("Bill", "89142657890");
         phone.add("Bob", "89265431245");
         phone.add("Mary","89286765888");
+        phone.add("Mary","456-12-34");
         phone.add("Bob","89018787432");
 
         list.addAll(List.of(array));
