@@ -8,7 +8,7 @@ import java.net.SocketException;
 public class MySimpleConsoleClient {
     private static final String HOST = "127.0.0.1";
     private static final int PORT = 8181;
-    private static final String NAME = "Bob";
+//    private static final String NAME = "Bob";     // Оставил на всякий случай
     private Thread clientConsoleThread;
     private DataInputStream in;
     private DataOutputStream out;
@@ -19,19 +19,19 @@ public class MySimpleConsoleClient {
 
     public void start() {
         try (var socket = new Socket(HOST, PORT)) {
-            System.out.printf("Client %s connected to server.\n", NAME);
+            System.out.println("Client connected to server.\n");
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-            out.writeUTF(NAME);
+//            out.writeUTF(NAME);
             startConsoleThread();
 
             while (true) {
                 var message = in.readUTF();
                 if(message.startsWith("/stop")){
                     shutdown();
-                    System.exit(1);
+                    System.exit(0);
                 }
-                System.out.println("Bob" + message);
+                System.out.println(message);
             }
         }catch (SocketException e){
             System.out.println("Connection to server has been interrupt");
@@ -51,7 +51,7 @@ public class MySimpleConsoleClient {
         if (clientConsoleThread.isAlive()) {
             clientConsoleThread.interrupt();
         }
-        System.out.printf("Client %s disconnect.",NAME);
+        System.out.println("Client disconnect.");
     }
 
     private void startConsoleThread() {
